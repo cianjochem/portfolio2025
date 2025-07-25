@@ -1,2 +1,33 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'EverettMono';
+  src: url('/fonts/EverettMono-Regular-web.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'EverettRegular';
+    src: url('/fonts/Everett-Regular-web.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EverettBold';
+    src: url('/fonts/Everett-Bold-web.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+html {
+  font-family: 'EverettRegular', sans-serif;
+  background-color: #f7f7f7;
+}
+
+h1, h2, h3 {
+  font-family: 'EverettBold', sans-serif;
+}
