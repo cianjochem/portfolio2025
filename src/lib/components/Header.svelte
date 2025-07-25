@@ -25,9 +25,8 @@
   .header-row {
     display: grid;
     grid-template-columns: repeat(40, 1fr);
-    font-family: 'EverettMono', monospace;
+    font-family: 'EverettBold', monospace;
     font-size: 16px;
-    height: 100px;
     position: relative;
     z-index: 0;
     width: 100%;
@@ -39,8 +38,7 @@
 
   @media (max-width: 768px) {
     .header-row {
-      font-size: 14px;
-      height: 80px;
+      font-size: 16px;
     }
   }
 </style>
