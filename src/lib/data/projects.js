@@ -67,6 +67,55 @@ The publication ›Suffocating Waters‹ aims to draw the reader's attention to 
 		vimeo: '',
 		teaserImage: '/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png',
 		images: ['/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png']
+	},
+	{
+		title: 'Schweiz 2075 2',
+		year: 2024,
+		type: ['Poster Design', 'Motion Design'],
+		slug: 'schweiz-2075-2',
+		description: 'Eine interaktive Installation zur Visualisierung von Datenströmen.',
+		mentors: 'Prof. Schmidt',
+		cooperation: 'Max Mustermann',
+		vimeo: '',
+		teaserImage: '/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png',
+		images: ['/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png']
+	},
+	{
+		title: 'Schweiz 2075 3',
+		year: 2024,
+		type: ['Poster Design', 'Motion Design'],
+		slug: 'schweiz-2075-3',
+		description: 'Eine interaktive Installation zur Visualisierung von Datenströmen.',
+		mentors: 'Prof. Schmidt',
+		cooperation: 'Max Mustermann',
+		vimeo: '',
+		teaserImage: '/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png',
+		images: ['/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png']
+	},
+	{
+		title: 'Schweiz 2075 4',
+		year: 2024,
+		type: ['Poster Design', 'Motion Design'],
+		slug: 'schweiz-2075-4',
+		description: 'Eine interaktive Installation zur Visualisierung von Datenströmen.',
+		mentors: 'Prof. Schmidt',
+		cooperation: 'Max Mustermann',
+		vimeo: '',
+		teaserImage: '/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png',
+		images: ['/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png']
+	},
+	{
+		title: 'Schweiz 2075 5',
+		year: 2024,
+		type: ['Poster Design', 'Motion Design'],
+		slug: 'schweiz-2075-5',
+		description: 'Eine interaktive Installation zur Visualisierung von Datenströmen.',
+		mentors: 'Prof. Schmidt',
+		cooperation: 'Max Mustermann',
+		vimeo: '',
+		teaserImage: '/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png',
+		images: ['/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png']
 	}
+
 	// Weitere Projekte...
 ];

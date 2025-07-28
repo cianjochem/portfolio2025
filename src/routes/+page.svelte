@@ -1,8 +1,9 @@
 <script>
 	import { projects as rawProjects } from '$lib/data/projects.js';
-	import AboutSection from '$lib/components/AboutSection.svelte';
+	import { inView } from '$lib/utils/inView.js';
+	import { writable } from 'svelte/store';
 
-	let showAbout = false;
+	const visibleProjects = writable(new Set());
 
 	function shuffle(array) {
 		const arr = [...array];
@@ -14,22 +15,26 @@
 	}
 
 	const projects = shuffle(rawProjects);
+
+	function handleInView(slug) {
+		return () => {
+			visibleProjects.update((set) => {
+				set.add(slug);
+				return new Set(set); // wichtig: neuer Set, damit Svelte die Änderung erkennt
+			});
+		};
+	}
 </script>
 
 <div class="page-wrapper">
-	<!-- About Section -->
-	{#if showAbout}
-		<AboutSection />
-	{/if}
-
-	<!-- Cards nur wenn About nicht aktiv -->
-	{#if !showAbout}
-		<div class="projects-grid">
-			{#each projects as project}
+	<div class="projects-grid">
+		{#each projects as project (project.slug)}
+			{#key project.slug}
 				<a
 					href={`/projects/${project.slug}`}
 					class="project-card"
-					aria-label={`View project: ${project.title}`}
+					class:visible={$visibleProjects.has(project.slug)}
+					use:inView={handleInView(project.slug)}
 				>
 					<img src={project.teaserImage || '/default.jpg'} alt={project.title} />
 					<div class="project-info-wrapper">
@@ -41,9 +46,9 @@
 						<h2>{project.title}</h2>
 					</div>
 				</a>
-			{/each}
-		</div>
-	{/if}
+			{/key}
+		{/each}
+	</div>
 </div>
 
 <style>
@@ -61,10 +66,20 @@
 	}
 
 	.project-card {
+		opacity: 0;
+		transform: translateY(30px);
+		transition:
+			opacity 0.5s ease,
+			transform 0.5s ease;
 		display: inline-block;
 		width: 100%;
 		margin-bottom: 1.5rem;
 		break-inside: avoid;
+	}
+
+	.project-card.visible {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
 	.project-card img {
