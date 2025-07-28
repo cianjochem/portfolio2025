@@ -3,37 +3,49 @@
 
 /* Custom Fonts */
 @font-face {
-  font-family: 'EverettMono';
-  src: url('/fonts/EverettMono-Regular-web.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'EverettMono';
+	src: url('/fonts/EverettMono-Regular-web.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'EverettRegular';
-    src: url('/fonts/Everett-Regular-web.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'EverettRegular';
+	src: url('/fonts/Everett-Regular-web.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'EverettBold';
-    src: url('/fonts/Everett-Bold-web.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
+	font-family: 'EverettBold';
+	src: url('/fonts/Everett-Bold-web.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
 }
 
 html {
-  font-family: 'EverettRegular', sans-serif;
-  background-color: #f7f7f7;
+	font-family: 'EverettRegular', sans-serif;
+	background-color: #f7f7f7;
+	font-size: 15px;
 }
 
-h1, h2, h3 {
-  font-family: 'EverettBold', sans-serif;
-  font-size: 16px;
+h1 {
+	font-family: 'EverettBold', sans-serif;
+	font-size: 1.3rem;
 }
 
-p, a{
-  font-family: 'EverettRegular', sans-serif;
-  font-size: 16px;
+h2 {
+	font-family: 'EverettBold', sans-serif;
+	font-size: 1rem;
+}
+
+h3 {
+	font-family: 'EverettRegular', sans-serif;
+	font-size: 1rem;
+}
+
+p,
+a {
+	font-family: 'EverettRegular', sans-serif;
+	font-size: 1rem;
 }

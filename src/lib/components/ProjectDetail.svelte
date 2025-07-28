@@ -1,6 +1,21 @@
 <script>
 	export let project;
+	import { inView } from '$lib/utils/inView.js';
+	import { writable } from 'svelte/store';
+
+	const visibleMedia = writable(new Set());
+
+	function markVisible(key) {
+		visibleMedia.update((set) => {
+			set.add(key);
+			return new Set(set);
+		});
+	}
 </script>
+
+{#if project.images?.length > 0}
+	<img src={project.images[0]} alt={project.title} class="main-image" />
+{/if}
 
 <div class="detail-wrapper">
 	<!-- Titel + Meta -->
@@ -12,71 +27,71 @@
 				<p>{project.year}</p>
 			{/if}
 
-			{#if project.tags?.length}
-				<p class="tags">
-					{#each project.tags as tag, i}
-						#{tag}{i < project.tags.length - 1 ? ' ' : ''}
+			{#if project.type?.length}
+				<div class="tags-container">
+					{#each project.type as tag}
+						<p class="tag">{tag}</p>
 					{/each}
-				</p>
-			{:else}
-				<p class="tags">#untagged</p>
+				</div>
 			{/if}
 		</div>
 
 		<!-- Beschreibung -->
 		<div class="description">
 			{#each project.description.split('\n\n') as paragraph}
-				<p>{paragraph}</p>
+				<p>{@html paragraph}</p>
 			{/each}
 		</div>
 	</div>
+</div>
 
-	<!-- Hauptbild -->
-	{#if project.images?.length > 0}
-		<img src={project.images[0]} alt={project.title} class="main-image" />
-	{:else}
-		<div class="placeholder-image">No main image available</div>
-	{/if}
-
-	<!-- Mediengalerie -->
+<!-- Mediengalerie -->
+{#if project.vimeo || project.images?.length > 1}
 	<div class="media-grid">
 		{#if project.vimeo}
-			<iframe
-				src={`https://player.vimeo.com/video/${project.vimeo}`}
-				frameborder="0"
-				allow="autoplay; fullscreen; picture-in-picture"
-				allowfullscreen
-			></iframe>
+			<div
+				class="media-item {$visibleMedia.has('vimeo') ? 'visible' : ''}"
+				use:inView={() => markVisible('vimeo')}
+			>
+				<iframe
+					src={`https://player.vimeo.com/video/${project.vimeo}?autoplay=1&muted=1&loop=1&background=1`}
+					allow="autoplay; fullscreen"
+					allowfullscreen
+				></iframe>
+			</div>
 		{/if}
 
-		{#if project.images?.length > (project.vimeo ? 1 : 0)}
-			{#each project.images.slice(project.vimeo ? 1 : 0) as img}
-				<img src={img} alt={project.title} />
-			{/each}
-		{:else if !project.vimeo}
-			<div class="placeholder-image">No additional media</div>
-		{/if}
+		{#each project.images.slice(project.vimeo ? 1 : 0) as img, i}
+			<div
+				class="media-item {$visibleMedia.has(`img-${i}`) ? 'visible' : ''}"
+				use:inView={() => markVisible(`img-${i}`)}
+			>
+				<img src={img} alt={project.title} loading="lazy" />
+			</div>
+		{/each}
 	</div>
+{/if}
 
-	<!-- Mentoren / Kooperation -->
-	<div class="footer-meta">
-		{#if project.mentors}
-			<p><strong>Mentors:</strong> {project.mentors}</p>
-		{/if}
-		{#if project.cooperation}
-			<p><strong>Cooperation:</strong> {project.cooperation}</p>
-		{/if}
-		{#if !project.mentors && !project.cooperation}
-			<p>No additional credits.</p>
-		{/if}
-	</div>
+<!-- Mentoren / Kooperation -->
+<div class="footer-meta">
+	{#if project.mentors}
+		<p><strong>Mentors:</strong> {project.mentors}</p>
+	{/if}
+	{#if project.cooperation}
+		<p><strong>Cooperation:</strong> {project.cooperation}</p>
+	{/if}
 </div>
 
 <style>
+	.main-image {
+		width: 100%;
+		margin: 1rem 0;
+		border-radius: 8px;
+	}
+
 	.detail-wrapper {
-		width: 80vw;
 		margin: 0 auto;
-		padding: 2rem 0;
+		padding: 2rem 0 4rem;
 	}
 
 	.meta {
@@ -92,66 +107,73 @@
 	}
 
 	h2 {
-		margin-bottom: 0.3rem;
+		margin-bottom: 1rem;
 	}
 
-	.tags {
-		color: #555;
-		text-transform: lowercase;
+	.tags-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
 		margin-top: 0.5rem;
+	}
+
+	.tag {
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		padding: 0.3rem 0.6rem;
+		font-size: 1rem;
+		color: #333;
+		text-transform: lowercase;
 	}
 
 	.description {
 		flex: 2;
 		column-count: 2;
 		column-gap: 2rem;
-		max-width: 100%;
 		line-height: 1.6;
 		text-align: left;
-		/* max-width: 65ch; */
-	}
-
-	.main-image {
-		width: 100%;
-		margin: 2rem 0;
-		border-radius: 8px;
-	}
-
-	.placeholder-image {
-		background: #ddd;
-		color: #666;
-		text-align: center;
-		padding: 4rem;
-		margin: 2rem 0;
-		border-radius: 8px;
-		font-style: italic;
 	}
 
 	.media-grid {
-		column-count: 2;
-		column-gap: 15px;
-		margin-bottom: 2rem;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 15px;
+		margin-top: 2rem;
+	}
+
+	.media-item {
+		opacity: 0;
+		transform: translateY(30px);
+		transition:
+			opacity 0.6s ease,
+			transform 0.6s ease;
+	}
+
+	.media-item.visible {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
 	.media-grid img,
 	.media-grid iframe {
 		width: 100%;
-		margin-bottom: 15px;
-		border-radius: 6px;
+		border-radius: 8px;
+		display: block;
+	}
+
+	iframe {
+		aspect-ratio: 16 / 9;
+		border: none;
 	}
 
 	.footer-meta {
-		margin-top: 2rem;
+		margin-top: 3rem;
 		font-size: 0.95rem;
-		color: #333;
+		color: #000000;
 	}
 
 	@media (max-width: 768px) {
 		.description {
-			column-count: 1;
-		}
-
-		.media-grid {
 			column-count: 1;
 		}
 	}

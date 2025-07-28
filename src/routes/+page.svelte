@@ -26,39 +26,28 @@
 	}
 </script>
 
-<div class="page-wrapper">
-	<div class="projects-grid">
-		{#each projects as project (project.slug)}
-			{#key project.slug}
-				<a
-					href={`/projects/${project.slug}`}
-					class="project-card"
-					class:visible={$visibleProjects.has(project.slug)}
-					use:inView={handleInView(project.slug)}
-				>
-					<img src={project.teaserImage || '/default.jpg'} alt={project.title} />
-					<div class="project-info-wrapper">
-						<p class="project-tag">
-							{#each project.type as tag, i}
-								#{tag}{i < project.type.length - 1 ? ' ' : ''}
-							{/each}
-						</p>
-						<h2>{project.title}</h2>
+<!-- Wrapper übernimmt die Breite vom Layout -->
+<div class="projects-grid">
+	{#each projects as project (project.slug)}
+		{#key project.slug}
+			<a
+				href={`/projects/${project.slug}`}
+				class="project-card"
+				class:visible={$visibleProjects.has(project.slug)}
+				use:inView={handleInView(project.slug)}
+			>
+				<div class="image-wrapper">
+					<img src={project.teaserImage} alt={project.title} />
+					<div class="hover-title">
+						<h3>{project.title}</h3>
 					</div>
-				</a>
-			{/key}
-		{/each}
-	</div>
+				</div>
+			</a>
+		{/key}
+	{/each}
 </div>
 
 <style>
-	.page-wrapper {
-		width: 80vw;
-		margin: 0 auto;
-		padding-bottom: 2rem;
-		position: relative;
-	}
-
 	.projects-grid {
 		column-count: 3;
 		column-gap: 15px;
@@ -69,12 +58,13 @@
 		opacity: 0;
 		transform: translateY(30px);
 		transition:
-			opacity 0.5s ease,
-			transform 0.5s ease;
+			opacity 1s ease,
+			transform 0.6s ease;
 		display: inline-block;
 		width: 100%;
 		margin-bottom: 1.5rem;
 		break-inside: avoid;
+		position: relative;
 	}
 
 	.project-card.visible {
@@ -82,50 +72,50 @@
 		transform: translateY(0);
 	}
 
+	.image-wrapper {
+		position: relative;
+		width: 100%;
+	}
+
 	.project-card img {
 		width: 100%;
 		height: auto;
 		object-fit: cover;
 		border-radius: 8px;
-		margin-bottom: 5px;
 		filter: grayscale(100%);
-		transition: filter 0.4s ease;
-	}
-
-	.project-card:hover {
-		transform: scale(1.02);
+		transition: filter 0.3s ease;
+		display: block;
 	}
 
 	.project-card:hover img {
 		filter: grayscale(0%);
 	}
 
-	.project-info-wrapper {
-		background: #fff;
+	.hover-title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: #ffffff;
+		padding: 0.6rem 1rem;
 		border-radius: 8px;
-		padding: 1rem;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		pointer-events: none;
+		text-align: center;
 	}
 
-	.project-tag {
-		color: #555;
-		text-transform: lowercase;
+	.project-card:hover .hover-title {
+		opacity: 1;
 	}
 
 	@media (max-width: 1024px) {
-		.page-wrapper {
-			width: 90vw;
-		}
 		.projects-grid {
 			column-count: 2;
-			column-gap: 15px;
 		}
 	}
 
 	@media (max-width: 640px) {
-		.page-wrapper {
-			width: 92vw;
-		}
 		.projects-grid {
 			column-count: 1;
 		}
