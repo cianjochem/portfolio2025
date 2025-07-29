@@ -24,7 +24,7 @@
 					role="button"
 					aria-label={showAbout ? 'Close About Section' : 'Open About Section'}
 				>
-					<h2>{showAbout ? '×' : 'About'}</h2>
+					<h2>{showAbout ? 'Close ✕' : 'About'}</h2>
 				</div>
 			</div>
 		</div>
@@ -80,7 +80,7 @@
 
 	.about-button {
 		cursor: pointer;
-		text-decoration: underline;
+		text-decoration: none;
 		user-select: none;
 		font-size: 1rem;
 	}
