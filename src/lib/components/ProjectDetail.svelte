@@ -5,6 +5,9 @@
 
 	const visibleMedia = writable(new Set());
 
+	const additionalImages = project.images?.slice(1) ?? [];
+	const showMedia = project.vimeo || additionalImages.length > 0;
+
 	function markVisible(key) {
 		visibleMedia.update((set) => {
 			set.add(key);
@@ -46,11 +49,11 @@
 </div>
 
 <!-- Mediengalerie -->
-{#if project.vimeo || project.images?.length > 1}
+{#if showMedia}
 	<div class="media-grid">
 		{#if project.vimeo}
 			<div
-				class="media-item {$visibleMedia.has('vimeo') ? 'visible' : ''}"
+				class="media-item vimeo-item {$visibleMedia.has('vimeo') ? 'visible' : ''}"
 				use:inView={() => markVisible('vimeo')}
 			>
 				<iframe
@@ -61,9 +64,11 @@
 			</div>
 		{/if}
 
-		{#each project.images.slice(project.vimeo ? 1 : 0) as img, i}
+		{#each additionalImages as img, i}
 			<div
-				class="media-item {$visibleMedia.has(`img-${i}`) ? 'visible' : ''}"
+				class="media-item {!project.vimeo && additionalImages.length === 1
+					? 'span-two'
+					: ''} {$visibleMedia.has(`img-${i}`) ? 'visible' : ''}"
 				use:inView={() => markVisible(`img-${i}`)}
 			>
 				<img src={img} alt={project.title} loading="lazy" />
@@ -81,6 +86,9 @@
 		<p><strong>Cooperation:</strong> {project.cooperation}</p>
 	{/if}
 </div>
+
+<!-- Back Link -->
+<p class="back-link"><a href="/">&larr; Back</a></p>
 
 <style>
 	.main-image {
@@ -136,9 +144,17 @@
 
 	.media-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 		gap: 15px;
 		margin-top: 2rem;
+	}
+
+	.vimeo-item {
+		grid-column: span 2;
+	}
+
+	.span-two {
+		grid-column: span 2;
 	}
 
 	.media-item {
@@ -172,9 +188,25 @@
 		color: #000000;
 	}
 
+	.back-link {
+		margin-top: 2rem;
+		text-decoration: none;
+		font-family: 'EverettBold', sans-serif;
+	}
+
+	@media (max-width: 1024px) {
+		.meta {
+			flex-direction: column;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.description {
 			column-count: 1;
+		}
+
+		.media-grid {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

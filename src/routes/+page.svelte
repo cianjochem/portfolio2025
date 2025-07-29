@@ -50,7 +50,7 @@
 <style>
 	.projects-grid {
 		column-count: 3;
-		column-gap: 15px;
+		column-gap: 1rem;
 		padding-top: 1rem;
 	}
 
@@ -62,7 +62,7 @@
 			transform 0.6s ease;
 		display: inline-block;
 		width: 100%;
-		margin-bottom: 1.5rem;
+		margin-bottom: 0.5rem;
 		break-inside: avoid;
 		position: relative;
 	}
