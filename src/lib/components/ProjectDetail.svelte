@@ -33,7 +33,7 @@
 			{#if project.type?.length}
 				<div class="tags-container">
 					{#each project.type as tag}
-						<p class="tag">{tag}</p>
+						<a href={`/?tag=${encodeURIComponent(tag)}`} class="tag">{tag}</a>
 					{/each}
 				</div>
 			{/if}
@@ -132,6 +132,7 @@
 		font-size: 1rem;
 		color: #333;
 		text-transform: lowercase;
+		text-decoration: none;
 	}
 
 	.description {

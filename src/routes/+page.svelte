@@ -2,6 +2,7 @@
 	import { projects as rawProjects } from '$lib/data/projects.js';
 	import { inView } from '$lib/utils/inView.js';
 	import { writable } from 'svelte/store';
+	import { page } from '$app/stores';
 
 	const visibleProjects = writable(new Set());
 
@@ -14,7 +15,17 @@
 		return arr;
 	}
 
-	const projects = shuffle(rawProjects);
+	const allProjects = shuffle(rawProjects);
+	let projects = allProjects;
+
+	$: selectedTag = $page.url.searchParams.get('tag');
+	$: projects = selectedTag
+		? allProjects.filter((p) => p.type?.includes(selectedTag))
+		: allProjects;
+
+	$: if (selectedTag) {
+		visibleProjects.set(new Set());
+	}
 
 	function handleInView(slug) {
 		return () => {
@@ -25,6 +36,14 @@
 		};
 	}
 </script>
+
+<!-- Wrapper übernimmt die Breite vom Layout -->
+{#if selectedTag}
+	<div class="active-filter">
+		<p class="tag">{selectedTag}</p>
+		<a href="/" class="clear-filter" aria-label="Filter entfernen">×</a>
+	</div>
+{/if}
 
 <!-- Wrapper übernimmt die Breite vom Layout -->
 <div class="projects-grid">
@@ -48,6 +67,29 @@
 </div>
 
 <style>
+	.active-filter {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 1rem 0;
+	}
+
+	.tag {
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		padding: 0.3rem 0.6rem;
+		font-size: 1rem;
+		color: #333;
+		text-transform: lowercase;
+		display: inline-block;
+	}
+
+	.clear-filter {
+		text-decoration: none;
+		font-size: 1.2rem;
+		cursor: pointer;
+	}
+
 	.projects-grid {
 		column-count: 3;
 		column-gap: 1rem;

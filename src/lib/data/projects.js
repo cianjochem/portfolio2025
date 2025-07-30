@@ -23,22 +23,19 @@ The publication ›Suffocating Waters‹ aims to draw the reader's attention to 
 		year: 2021,
 		type: ['Generative Tool'],
 		slug: 'wind-display',
-		description: 'Ein generatives Tool zur Visualisierung von Winddaten.',
+		description: `›WindDisplay‹ is an online tool that shows the current wind conditions worldwide. The typography is influenced by real-time data, such as wind strength and wind direction. It should show experimentally how data could be visualized in other ways and how typography can communicate information only through visual appearance. The tool can be individualized by different sliders to change the location or the style of visualization.`,
 		mentors: 'Ted Davies',
 		cooperation: 'Alick Rodinova',
-		vimeo: '',
+		vimeo: '538419044',
 		teaserImage: '/projects/wind-display/teaser.png',
-		images: [
-			'/projects/wind-display/screenshot1-min-1200x.png',
-			'/projects/wind-display/screenshot2-min-1200x.png'
-		]
+		images: ['/projects/wind-display/teaser.png']
 	},
 	{
 		title: 'Gässli Film Festival',
 		year: 2018,
 		type: ['Poster', 'Motion'],
 		slug: 'gaessli-film-festival',
-		description: `The ›Gässli Film Festival‹ is a short film festival held annually in the ›Gerbergässlein‹ in Basel. As a non-profit event in the Basel region, it conveys cinematic fascination and backgrounds on filmmaking.\n\n		The Festival should be communicated through a keyvisual, which works as a poster and as moving media in the form of a teaser. The keyvisual is based on typographic experiments with a tube screen in 4:3 format. This resulted in moving typographic compositions, which should remind the viewer of the nostalgia in the filmmaking of the 80s.`,
+		description: `The ›Gässli Film Festival‹ is a short film festival held annually in the ›Gerbergässlein‹ in Basel. As a non-profit event in the Basel region, it conveys cinematic fascination and backgrounds on filmmaking. \n\n The Festival should be communicated through a keyvisual, which works as a poster and as moving media in the form of a teaser. The keyvisual is based on typographic experiments with a tube screen in 4:3 format. This resulted in moving typographic compositions, which should remind the viewer of the nostalgia in the filmmaking of the 80s.`,
 		mentors: 'Prof Marion Fink / Dirk Koy / Fabian Kempter',
 		cooperation: 'Salome Habersatter',
 		vimeo: '343040619',

@@ -24,7 +24,7 @@
 					role="button"
 					aria-label={showAbout ? 'Close About Section' : 'Open About Section'}
 				>
-					<h2>{showAbout ? 'Close ✕' : 'About'}</h2>
+					<h2>{showAbout ? 'Close ×' : 'About'}</h2>
 				</div>
 			</div>
 		</div>
