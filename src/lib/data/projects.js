@@ -36,7 +36,7 @@ The publication ›Suffocating Waters‹ aims to draw the reader's attention to 
 		type: ['Poster', 'Motion'],
 		slug: 'gaessli-film-festival',
 		description: `The ›Gässli Film Festival‹ is a short film festival held annually in the ›Gerbergässlein‹ in Basel. As a non-profit event in the Basel region, it conveys cinematic fascination and backgrounds on filmmaking. \n\n The Festival should be communicated through a keyvisual, which works as a poster and as moving media in the form of a teaser. The keyvisual is based on typographic experiments with a tube screen in 4:3 format. This resulted in moving typographic compositions, which should remind the viewer of the nostalgia in the filmmaking of the 80s.`,
-		mentors: 'Prof Marion Fink / Dirk Koy / Fabian Kempter',
+		mentors: 'Prof Marion Fink, Dirk Koy, Fabian Kempter',
 		cooperation: 'Salome Habersatter',
 		vimeo: '343040619',
 		teaserImage: '/projects/gässli-film-festival/dsc00604-min-1200x.png',
@@ -53,16 +53,83 @@ The publication ›Suffocating Waters‹ aims to draw the reader's attention to 
 		images: ['/projects/poster-slam-16/dsc00659-min-1200x.png']
 	},
 	{
-		title: 'Schweiz 2075',
+		title: 'Switzerland 2075',
 		year: 2024,
-		type: ['Poster Design', 'Motion Design'],
+		type: ['Data Visualization'],
 		slug: 'schweiz-2075',
-		description: 'Eine interaktive Installation zur Visualisierung von Datenströmen.',
-		mentors: 'Prof. Schmidt',
-		cooperation: 'Max Mustermann',
+		description:
+			'How will climate change alter Switzerland’s landscape? In this immersive article, the reader travels along the Aare River in the year 2075 to explore how rising temperatures affect water supply and demand. \n\n A 3D map guides the journey, with satellite imagery altered based on scientific data to show how the landscape might look 50 years from now. At two locations—one in the Alps and one in a forest—the reader dives down to ground level: they peer into a new lake where a glacier once stood and walk along the ridge of a transformed forest. Data visualizations and geographic overlays on the map provide scientific context to the journey. The article reveals how much might change—and how early adaptation and decisive action could still make our future livable.',
+		cooperation: 'Adina Renner, Sven Titz, Michel Graustück, Tom Vaillant, John Cors',
+		vimeo: '1106720209',
+		article:
+			'https://www.nzz.ch/english/switzerland-in-2075-a-climate-change-visualization-ld.1855325',
+		teaserImage: '/projects/schweiz-2075/ch2075-teaser.png',
+		images: [
+			'/projects/schweiz-2075/3-cw-teaser.png',
+			'/projects/schweiz-2075/1-cw-teaser.png',
+			'/projects/schweiz-2075/making-of-6 Kopie@3x.png',
+			'/projects/schweiz-2075/2-cw-teaser.png',
+			'/projects/schweiz-2075/5-cw-teaser.png',
+			'/projects/schweiz-2075/making-of-6 Kopie 2@3x.png',
+			'/projects/schweiz-2075/4-cw-teaser.png'
+		]
+	},
+	{
+		title: 'Forgotten Wars',
+		year: 2024,
+		type: ['Data Visualization', '3D Animation', 'Mapping'],
+		slug: 'forgotten-wars',
+		description:
+			'As part of a NZZ data investigation, this story highlights how overlooked civil wars shape today’s geopolitical tensions. The centerpiece is an animated 3D globe that visualizes ACLED conflict data as bars rising from locations of political violence. \n\n The visualization is embedded as a video and contrasts linear and logarithmic scales to reveal both large-scale wars and lesser-known unrest. Through this spatial and temporal rendering, the design allows for intuitive comparison of global conflict intensity while integrating seamlessly into the article’s narrative flow.',
+		cooperation: 'Georg Häsler',
+		vimeo: '1106428773',
+		article:
+			'https://www.nzz.ch/english/part1-tomorrows-conflicts-may-rise-from-todays-forgotten-wars-ld.1777074',
+		teaserImage: '/projects/forgotten-wars/teaser_png_00000.png',
+		images: ['/projects/forgotten-wars/en_fw@3x.png']
+	},
+	{
+		title: 'Greenland Deal',
+		year: 2025,
+		type: ['Data Visualization', 'Mapping'],
+		slug: 'greenland-deal',
+		description: '',
+		cooperation: 'Andreas Rüesch',
 		vimeo: '',
-		teaserImage: '/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png',
-		images: ['/projects/schweiz-2075/cefc53e1-f40e-4b05-8fd9-7ddb5ed07df5.png']
+		article:
+			'https://www.nzz.ch/international/trump-und-groenland-strategische-rolle-aber-auch-prestigeprojekt-ld.1876958',
+		teaserImage: '/projects/greenland-deal/greenland-teaser.png',
+		images: [
+			'/projects/greenland-deal/ff42fc9dffbfb98a85c0a48280422d7d_kw.png',
+			'/projects/greenland-deal/ff42fc9dffbfb98a85c0a4828042d217_cw.png',
+			'/projects/greenland-deal/d6388fe6a215a72ecb46a581aced2975_cw.png'
+		]
+	},
+	{
+		title: 'Iranian Nuclear Program',
+		year: 2025,
+		type: ['Illustration'],
+		slug: 'iranian-nuclear-program',
+		description: '',
+		cooperation: 'Jonas Oesch, Joana Kelén, Leonid Leiva Ariosa',
+		vimeo: '',
+		article:
+			'https://www.nzz.ch/wissenschaft/iran-und-die-atombombe-wie-realistisch-ist-der-bau-heute-ld.1891834',
+		teaserImage: '/projects/iranian-nuclear-program/iran-atomprogramm-teaser.png',
+		images: ['/projects/iranian-nuclear-program/iran-atomprogramm.png']
+	},
+	{
+		title: 'Rubaya Mine',
+		year: 2025,
+		type: ['Data Visualization', '3D Animation', 'Mapping'],
+		slug: 'rubaya-mine',
+		description: '',
+		cooperation: 'Adina Renner, Samuel Misteli, Arlette Bashizi',
+		vimeo: '1106734298',
+		article:
+			'https://www.nzz.ch/english/from-congos-rebel-held-mine-to-the-wests-phones-ld.1881059',
+		teaserImage: '/projects/rubaya-mine/rubaya-teaser.png',
+		images: ['/projects/rubaya-mine/rubaya-1.png']
 	}
 	// Weitere Projekte...
 ];

@@ -124,7 +124,7 @@
 		height: auto;
 		object-fit: cover;
 		border-radius: 8px;
-		filter: grayscale(100%);
+		filter: grayscale(0%);
 		transition: filter 0.3s ease;
 		display: block;
 	}

@@ -26,6 +26,12 @@
 		<div class="left-meta">
 			<h2>{project.title}</h2>
 
+			{#if project.article}
+				<p class="article-link">
+					<a href={project.article} target="_blank" rel="noopener noreferrer">Read article ↗</a>
+				</p>
+			{/if}
+
 			{#if project.year}
 				<p>{project.year}</p>
 			{/if}
@@ -115,7 +121,7 @@
 	}
 
 	h2 {
-		margin-bottom: 1rem;
+		margin-bottom: 0.3rem;
 	}
 
 	.tags-container {
@@ -133,6 +139,16 @@
 		color: #333;
 		text-transform: lowercase;
 		text-decoration: none;
+	}
+
+	.article-link {
+		margin-top: 0rem;
+	}
+
+	.article-link a {
+		font-size: 1rem;
+		color: #000;
+		text-decoration: underline;
 	}
 
 	.description {
