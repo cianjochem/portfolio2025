@@ -3,25 +3,16 @@
 	import { inView } from '$lib/utils/inView.js';
 	import { writable } from 'svelte/store';
 	import { page } from '$app/stores';
+	import { onMount, afterUpdate } from 'svelte';
 
 	const visibleProjects = writable(new Set());
-
-	function shuffle(array) {
-		const arr = [...array];
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
-
-	const allProjects = shuffle(rawProjects);
-	let projects = allProjects;
+	let projects = rawProjects;
+	let macyInstance;
 
 	$: selectedTag = $page.url.searchParams.get('tag');
 	$: projects = selectedTag
-		? allProjects.filter((p) => p.type?.includes(selectedTag))
-		: allProjects;
+		? rawProjects.filter((p) => p.type?.includes(selectedTag))
+		: rawProjects;
 
 	$: if (selectedTag) {
 		visibleProjects.set(new Set());
@@ -31,13 +22,39 @@
 		return () => {
 			visibleProjects.update((set) => {
 				set.add(slug);
-				return new Set(set); // wichtig: neuer Set, damit Svelte die Änderung erkennt
+				return new Set(set);
 			});
 		};
 	}
+
+	async function initializeMacy() {
+		// Macy nur im Browser laden
+		const Macy = (await import('macy')).default;
+
+		macyInstance = Macy({
+			container: '.projects-grid',
+			trueOrder: false,
+			waitForImages: true,
+			margin: 16,
+			columns: 3,
+			breakAt: {
+				1024: 2,
+				640: 1
+			}
+		});
+	}
+
+	onMount(() => {
+		initializeMacy();
+	});
+
+	afterUpdate(() => {
+		if (macyInstance) {
+			macyInstance.recalculate(true);
+		}
+	});
 </script>
 
-<!-- Wrapper übernimmt die Breite vom Layout -->
 {#if selectedTag}
 	<div class="active-filter">
 		<p class="tag">{selectedTag}</p>
@@ -45,7 +62,6 @@
 	</div>
 {/if}
 
-<!-- Wrapper übernimmt die Breite vom Layout -->
 <div class="projects-grid">
 	{#each projects as project (project.slug)}
 		{#key project.slug}
@@ -91,9 +107,7 @@
 	}
 
 	.projects-grid {
-		column-count: 3;
-		column-gap: 1rem;
-		padding-top: 1rem;
+		display: block;
 	}
 
 	.project-card {
@@ -102,10 +116,8 @@
 		transition:
 			opacity 1s ease,
 			transform 0.6s ease;
-		display: inline-block;
 		width: 100%;
-		margin-bottom: 0.5rem;
-		break-inside: avoid;
+		margin-bottom: 16px;
 		position: relative;
 	}
 
@@ -149,17 +161,5 @@
 
 	.project-card:hover .hover-title {
 		opacity: 1;
-	}
-
-	@media (max-width: 1024px) {
-		.projects-grid {
-			column-count: 2;
-		}
-	}
-
-	@media (max-width: 640px) {
-		.projects-grid {
-			column-count: 1;
-		}
 	}
 </style>

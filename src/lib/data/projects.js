@@ -1,7 +1,7 @@
 // src/lib/data/projects.js
 export const projects = [
 	{
-		title: 'Nuclear bomb',
+		title: 'Nuclear Bomb',
 		year: 2025,
 		type: ['Illustration'],
 		slug: 'nuclear-bomb',
@@ -61,7 +61,7 @@ export const projects = [
 		vimeo: '1106428773',
 		article:
 			'https://www.nzz.ch/english/part1-tomorrows-conflicts-may-rise-from-todays-forgotten-wars-ld.1777074',
-		teaserImage: '/projects/forgotten-wars/teaser_png_00000.png',
+		teaserImage: '/projects/forgotten-wars/forgotten-wars-teaser.png',
 		images: ['/projects/forgotten-wars/en_fw@3x.png']
 	},
 	{
