@@ -1,10 +1,10 @@
 // src/lib/data/projects.js
 export const projects = [
 	{
-		title: 'Nuclear Bomb',
+		title: 'Iranian Bomb',
 		year: 2025,
 		type: ['Illustration'],
-		slug: 'nuclear-bomb',
+		slug: 'iranian-bomb',
 		description: '',
 		cooperation: 'Jonas Oesch, Joana Kelén, Leonid Leiva Ariosa',
 		vimeo: '',
@@ -49,6 +49,19 @@ export const projects = [
 			'/projects/greenland-deal/greenland-deal-2.png',
 			'/projects/greenland-deal/greenland-deal-3.png'
 		]
+	},
+	{
+		title: 'Moon Objects',
+		year: 2024,
+		type: ['Data Visualization', '3D Animation', 'Mapping'],
+		slug: 'moon-objects',
+		description: '',
+		cooperation: 'Pauline Martinet (Illustration), Martin Amrein (Text)',
+		vimeo: '',
+		article:
+			'https://www.nzz.ch/english/part1-tomorrows-conflicts-may-rise-from-todays-forgotten-wars-ld.1777074',
+		teaserImage: '/projects/moon-objects/moon-objects-teaser.png',
+		images: ['/projects/moon-objects/moon-objects-teaser.png']
 	},
 	{
 		title: 'Forgotten Wars',
@@ -103,6 +116,16 @@ export const projects = [
 		]
 	},
 	{
+		title: 'Microchips',
+		year: 2023,
+		type: ['Data Visualization', 'Illustration'],
+		slug: 'microchips',
+		description: ``,
+		cooperation: 'Roland Shaw, Kaspar Manz',
+		teaserImage: '/projects/microchips/microchips-teaser.png',
+		images: ['/projects/microchips/microchips-teaser.png']
+	},
+	{
 		title: 'Densification',
 		year: 2022,
 		type: ['Data Visualization', 'Illustration'],
@@ -110,7 +133,23 @@ export const projects = [
 		description: ``,
 		cooperation: 'Giorgio Scherrer (Text)',
 		teaserImage: '/projects/densification/verdichtung-teaser.png',
-		images: ['/projects/densification/densification-titel.gif']
+		images: [
+			'/projects/densification/verdichtung-teaser.png',
+			'/projects/densification/verdichtung-1.png'
+		]
+	},
+	{
+		title: 'Nespresso',
+		year: 2021,
+		type: ['Data Visualization', 'Illustration'],
+		slug: 'nespresso',
+		description: ``,
+		cooperation: 'Martin Beglinger, Matthias Benz (Text)',
+		teaserImage: '/projects/nespresso-sustainability/nespresso-1.png',
+		images: [
+			'/projects/nespresso-sustainability/nespresso-sustainability-teaser.png',
+			'/projects/nespresso-sustainability/nespresso-1.png'
+		]
 	},
 	{
 		title: 'WindDisplay',

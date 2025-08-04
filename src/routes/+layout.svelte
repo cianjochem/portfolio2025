@@ -84,4 +84,10 @@
 		user-select: none;
 		font-size: 1rem;
 	}
+
+	@media (max-width: 768px) {
+		h2 {
+			font-size: 1.2rem;
+		}
+	}
 </style>

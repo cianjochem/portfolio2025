@@ -58,8 +58,8 @@
 	.header-wrapper {
 		display: flex;
 		flex-direction: column;
-		font-size: 16px;
-		font-family: 'EverettBold', monospace;
+		font-size: 1.2rem;
+		font-family: 'EverettBold', sans-serif;
 		gap: 4px;
 	}
 

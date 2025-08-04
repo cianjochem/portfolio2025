@@ -117,7 +117,7 @@
 			opacity 1s ease,
 			transform 0.6s ease;
 		width: 100%;
-		margin-bottom: 16px;
+		margin-bottom: 1rem;
 		position: relative;
 	}
 
