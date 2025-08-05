@@ -208,6 +208,7 @@ export const projects = [
 		cooperation: 'Martin Beglinger, Matthias Benz (Text)',
 		teaserImage: '/projects/nespresso-sustainability/nespresso-1.png',
 		media: [
+			{ type: 'vimeo', id: '1107480358', span: 2 },
 			{
 				type: 'image',
 				src: '/projects/nespresso-sustainability/nespresso-sustainability-teaser.png',

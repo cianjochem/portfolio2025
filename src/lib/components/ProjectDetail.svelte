@@ -2,6 +2,7 @@
 	export let project;
 	import { inView } from '$lib/utils/inView.js';
 	import { writable } from 'svelte/store';
+	import Player from '@vimeo/player';
 
 	const visibleMedia = writable(new Set());
 
@@ -10,6 +11,22 @@
 			set.add(key);
 			return new Set(set);
 		});
+	}
+
+	function setAspectRatio(node) {
+		const player = new Player(node);
+		player
+			.ready()
+			.then(() => Promise.all([player.getVideoWidth(), player.getVideoHeight()]))
+			.then(([width, height]) => {
+				node.style.setProperty('--aspect-ratio', `${width} / ${height}`);
+			})
+			.catch(() => {});
+		return {
+			destroy() {
+				player.destroy();
+			}
+		};
 	}
 </script>
 
@@ -23,6 +40,8 @@
 			src={`https://player.vimeo.com/video/${project.media[0].id}?autoplay=1&muted=1&loop=1&background=1`}
 			allow="autoplay; fullscreen"
 			allowfullscreen
+			title={project.title}
+			use:setAspectRatio
 		></iframe>
 	{/if}
 {/if}
@@ -75,6 +94,8 @@
 						src={`https://player.vimeo.com/video/${item.id}?autoplay=1&muted=1&loop=1&background=1`}
 						allow="autoplay; fullscreen"
 						allowfullscreen
+						title={project.title}
+						use:setAspectRatio
 					></iframe>
 				{/if}
 			</div>
@@ -190,7 +211,7 @@
 	}
 
 	iframe {
-		aspect-ratio: 16 / 9;
+		aspect-ratio: var(--aspect-ratio, 16 / 9);
 		border: none;
 	}
 

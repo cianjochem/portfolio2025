@@ -25,6 +25,7 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"@vimeo/player": "^2.29.2",
 		"macy": "^2.5.1",
 		"masonry-layout": "^4.2.2",
 		"p5": "^2.0.3"
