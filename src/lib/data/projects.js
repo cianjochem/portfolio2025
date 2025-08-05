@@ -11,15 +11,25 @@ export const projects = [
 			'https://www.nzz.ch/wissenschaft/iran-und-die-atombombe-wie-realistisch-ist-der-bau-heute-ld.1891834',
 		teaserImage: '/projects/nuclear-bomb/iranian-nuclear-program-1.png',
 		media: [
-			{ type: 'vimeo', id: '', span: 2 },
+			{ type: 'vimeo', id: '1107567027', span: 2 },
 			{
 				type: 'image',
 				src: '/projects/nuclear-bomb/iranian-nuclear-program-1.png',
-				span: 2
+				span: 1
 			},
 			{
 				type: 'image',
-				src: '/projects/nuclear-bomb/nuclear-bomb-1.png',
+				src: '/projects/nuclear-bomb/iranian-nuclear-program-2.png',
+				span: 1
+			},
+			{
+				type: 'image',
+				src: '/projects/nuclear-bomb/iranian-nuclear-program-3.png',
+				span: 1
+			},
+			{
+				type: 'image',
+				src: '/projects/nuclear-bomb/iranian-nuclear-program-4.png',
 				span: 1
 			}
 		]
@@ -91,6 +101,21 @@ export const projects = [
 				type: 'image',
 				src: '/projects/moon-objects/moon-objects-teaser.png',
 				span: 2
+			},
+			{
+				type: 'image',
+				src: '/projects/moon-objects/moon-objects-1.png',
+				span: 2
+			},
+			{
+				type: 'image',
+				src: '/projects/moon-objects/moon-objects-2.png',
+				span: 1
+			},
+			{
+				type: 'image',
+				src: '/projects/moon-objects/moon-objects-3.png',
+				span: 1
 			}
 		]
 	},
@@ -173,8 +198,28 @@ export const projects = [
 		media: [
 			{
 				type: 'image',
-				src: '/projects/microchips/microchips-teaser.png',
+				src: '/projects/microchips/microchips-1.png',
 				span: 2
+			},
+			{
+				type: 'image',
+				src: '/projects/microchips/microchips-teaser.png',
+				span: 1
+			},
+			{
+				type: 'image',
+				src: '/projects/microchips/microchips-2.png',
+				span: 1
+			},
+			{
+				type: 'image',
+				src: '/projects/microchips/microchips-3.png',
+				span: 1
+			},
+			{
+				type: 'image',
+				src: '/projects/microchips/microchips-4.png',
+				span: 1
 			}
 		]
 	},
@@ -211,13 +256,8 @@ export const projects = [
 			{ type: 'vimeo', id: '1107480358', span: 2 },
 			{
 				type: 'image',
-				src: '/projects/nespresso-sustainability/nespresso-sustainability-teaser.png',
-				span: 2
-			},
-			{
-				type: 'image',
 				src: '/projects/nespresso-sustainability/nespresso-1.png',
-				span: 1
+				span: 2
 			}
 		]
 	},
