@@ -5,9 +5,6 @@
 
 	const visibleMedia = writable(new Set());
 
-	const additionalImages = project.images?.slice(1) ?? [];
-	const showMedia = project.vimeo || additionalImages.length > 0;
-
 	function markVisible(key) {
 		visibleMedia.update((set) => {
 			set.add(key);
@@ -16,12 +13,22 @@
 	}
 </script>
 
-{#if project.images?.length > 0}
-	<img src={project.images[0]} alt={project.title} class="main-image" />
+<!-- Titelbild / Titelvideo -->
+{#if project.media?.length > 0}
+	{#if project.media[0].type === 'image'}
+		<img src={project.media[0].src} alt={project.title} class="main-image" />
+	{:else if project.media[0].type === 'vimeo'}
+		<iframe
+			class="main-image"
+			src={`https://player.vimeo.com/video/${project.media[0].id}?autoplay=1&muted=1&loop=1&background=1`}
+			allow="autoplay; fullscreen"
+			allowfullscreen
+		></iframe>
+	{/if}
 {/if}
 
+<!-- Projektbeschreibung + Metadaten -->
 <div class="detail-wrapper">
-	<!-- Titel + Meta -->
 	<div class="meta">
 		<div class="left-meta">
 			<h2>{project.title}</h2>
@@ -45,7 +52,6 @@
 			{/if}
 		</div>
 
-		<!-- Beschreibung -->
 		<div class="description">
 			{#each project.description.split('\n\n') as paragraph}
 				<p>{@html paragraph}</p>
@@ -55,35 +61,28 @@
 </div>
 
 <!-- Mediengalerie -->
-{#if showMedia}
+{#if project.media?.length > 1}
 	<div class="media-grid">
-		{#if project.vimeo}
+		{#each project.media.slice(1) as item, i}
 			<div
-				class="media-item vimeo-item {$visibleMedia.has('vimeo') ? 'visible' : ''}"
-				use:inView={() => markVisible('vimeo')}
+				class={`media-item ${item.span === 2 ? 'span-two' : ''} ${$visibleMedia.has(`media-${i + 1}`) ? 'visible' : ''}`}
+				use:inView={() => markVisible(`media-${i + 1}`)}
 			>
-				<iframe
-					src={`https://player.vimeo.com/video/${project.vimeo}?autoplay=1&muted=1&loop=1&background=1`}
-					allow="autoplay; fullscreen"
-					allowfullscreen
-				></iframe>
-			</div>
-		{/if}
-
-		{#each additionalImages as img, i}
-			<div
-				class="media-item {!project.vimeo && additionalImages.length === 1
-					? 'span-two'
-					: ''} {$visibleMedia.has(`img-${i}`) ? 'visible' : ''}"
-				use:inView={() => markVisible(`img-${i}`)}
-			>
-				<img src={img} alt={project.title} loading="lazy" />
+				{#if item.type === 'image'}
+					<img src={item.src} alt={project.title} loading="lazy" />
+				{:else if item.type === 'vimeo'}
+					<iframe
+						src={`https://player.vimeo.com/video/${item.id}?autoplay=1&muted=1&loop=1&background=1`}
+						allow="autoplay; fullscreen"
+						allowfullscreen
+					></iframe>
+				{/if}
 			</div>
 		{/each}
 	</div>
 {/if}
 
-<!-- Mentoren / Kooperation -->
+<!-- Footer Infos -->
 <div class="footer-meta">
 	{#if project.mentors}
 		<p><strong>Mentors:</strong> {project.mentors}</p>
@@ -93,7 +92,7 @@
 	{/if}
 </div>
 
-<!-- Back Link -->
+<!-- Zurück-Link -->
 <p class="back-link"><a href="/">&larr; Back</a></p>
 
 <style>
@@ -166,14 +165,6 @@
 		margin-top: 2rem;
 	}
 
-	.vimeo-item {
-		grid-column: span 2;
-	}
-
-	.span-two {
-		grid-column: span 2;
-	}
-
 	.media-item {
 		opacity: 0;
 		transform: translateY(30px);
@@ -185,6 +176,10 @@
 	.media-item.visible {
 		opacity: 1;
 		transform: translateY(0);
+	}
+
+	.span-two {
+		grid-column: span 2;
 	}
 
 	.media-grid img,
@@ -226,7 +221,6 @@
 			grid-template-columns: 1fr;
 		}
 
-		.vimeo-item,
 		.span-two {
 			grid-column: span 1;
 		}
