@@ -1,5 +1,3 @@
-import type from 'p5/type';
-
 // src/lib/data/projects.js
 export const projects = [
 	{
