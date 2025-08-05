@@ -225,5 +225,10 @@
 		.media-grid {
 			grid-template-columns: 1fr;
 		}
+
+		.vimeo-item,
+		.span-two {
+			grid-column: span 1;
+		}
 	}
 </style>

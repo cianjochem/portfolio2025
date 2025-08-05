@@ -45,7 +45,20 @@
 	}
 
 	onMount(() => {
-		initializeMacy();
+		const onLoad = async () => {
+			await initializeMacy();
+			if (macyInstance) {
+				macyInstance.recalculate(true);
+			}
+		};
+
+		if (document.readyState === 'complete') {
+			onLoad();
+		} else {
+			window.addEventListener('load', onLoad);
+		}
+
+		return () => window.removeEventListener('load', onLoad);
 	});
 
 	afterUpdate(() => {
