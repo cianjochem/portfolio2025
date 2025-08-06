@@ -1,10 +1,10 @@
 // src/lib/data/projects.js
 export const projects = [
 	{
-		title: 'Iranian Bomb',
+		title: 'Nuclear Program',
 		year: 2025,
 		type: ['Illustration'],
-		slug: 'iranian-bomb',
+		slug: 'nuclear-program',
 		description: `Amid escalating tensions and recent strikes on Iranian nuclear sites, this article examines how close Iran might be to producing a functional atomic weapon. The story is supported by classic static infographics that explain two core aspects: the internal structure of an implosion-type bomb and the multi-stage process of uranium enrichment. \n\n Simple schematic illustrations and charts clarify the relationship between enrichment levels, technical effort, and weapons-grade material. All graphics are designed for seamless integration into web layouts and optimized for mobile screens, with clear labeling, reduced complexity, and strong visual hierarchy for maximum clarity on all devices.`,
 		cooperation: 'Jonas Oesch, Joana Kelén, Leonid Leiva Ariosa',
 		article:
@@ -37,7 +37,7 @@ export const projects = [
 	{
 		title: 'Rubaya Mine',
 		year: 2025,
-		type: ['Data Visualization', '3D Animation', 'Mapping'],
+		type: ['3D Animation', 'Mapping', 'Data Visualization'],
 		slug: 'rubaya-mine',
 		description: `This visual story traces the journey to one of the world’s largest coltan mines, now controlled by the M23 rebel group. A 3D flyover reveals a rust-red scar carved into the lush green hills near Rubaya, Congo’s so-called ›little Switzerland‹. The perspective then zooms out to an animated map showing rebel-controlled territory in eastern Congo. \n\n Static infographics visualize coltan production volumes, trade flows and the rise in Rwanda’s exports, raising questions about smuggling and conflict financing. The piece connects local exploitation to global consumption, linking miners in Rubaya to electronics in Europe.`,
 		cooperation: 'Adina Renner, Samuel Misteli, Arlette Bashizi',
@@ -69,10 +69,10 @@ export const projects = [
 		]
 	},
 	{
-		title: 'Greenland Deal',
+		title: 'Greenland',
 		year: 2025,
-		type: ['Data Visualization', 'Mapping'],
-		slug: 'greenland-deal',
+		type: ['Mapping'],
+		slug: 'greenland',
 		description: `This article explores why the United States under Donald Trump renewed its interest in Greenland — not only for strategic defense but also as a symbol of power. A series of static editorial maps form the visual backbone of the story. One map shows Greenland’s location between Russia and North America and explains its importance for missile defense and Arctic shipping lanes. Another highlights the long-standing US military presence and key infrastructure like the Pituffik Space Base and undersea data cables. A third map focuses on mineral deposits such as rare earths and oil fields, pointing to Greenland’s economic potential. The maps rely on reduced design, clear structure and consistent visual language to turn complex geopolitical relationships into accessible visual explanations.`,
 		cooperation: 'Andreas Rüesch',
 		article:
@@ -99,12 +99,12 @@ export const projects = [
 	{
 		title: 'Moon Objects',
 		year: 2024,
-		type: ['Data Visualization', '3D Animation', 'Mapping'],
+		type: ['3D Animation', 'Mapping', 'Print'],
 		slug: 'moon-objects',
 		description: `This visual story explores the objects humans have left behind on the Moon. From golf balls and rovers to scientific instruments and waste bags, each item tells part of space history. The centerpiece is a 3D Moon model used in the digital version as an animated scrollytelling element. As users scroll, landings and artifacts are revealed with smooth transitions and clear labels. For print, the same model was adapted into a large double-page spread.`,
 		cooperation: 'Pauline Martinet (Illustration), Martin Amrein (Text)',
 		article:
-			'https://www.nzz.ch/english/part1-tomorrows-conflicts-may-rise-from-todays-forgotten-wars-ld.1777074',
+			'https://www.nzz.ch/wissenschaft/ueber-tausend-gegenstaende-auf-dem-mond-was-geschieht-damit-ld.1823689',
 		teaserImage: '/projects/moon-objects/moon-objects-teaser.png',
 		media: [
 			{
@@ -136,7 +136,7 @@ export const projects = [
 		slug: 'forgotten-wars',
 		description:
 			'As part of a NZZ data investigation, this story highlights how overlooked civil wars shape today’s geopolitical tensions. The centerpiece is an animated 3D globe that visualizes ACLED conflict data as bars rising from locations of political violence. \n\n The visualization is embedded as a video and contrasts linear and logarithmic scales to reveal both large-scale wars and lesser-known unrest. Through this spatial and temporal rendering, the design allows for intuitive comparison of global conflict intensity while integrating seamlessly into the article’s narrative flow.',
-		cooperation: 'Georg Häsler',
+		cooperation: 'Georg Häsler (Text)',
 		article:
 			'https://www.nzz.ch/english/part1-tomorrows-conflicts-may-rise-from-todays-forgotten-wars-ld.1777074',
 		teaserImage: '/projects/forgotten-wars/forgotten-wars-teaser.png',
@@ -185,7 +185,7 @@ export const projects = [
 		type: ['Data Visualization', '3D Animation'],
 		slug: 'bahnhofstrasse',
 		description: `This data-driven visual story traces the transformation of Zurich’s Bahnhofstrasse since 1990. At its core is a custom-built 3D model of the entire street, created using official city data. Users can scroll through the decades to explore how traditional shops disappeared and global luxury brands took over. \n\n Interactive filters and animated highlights reveal changes by industry and building. The project translates complex urban and economic developments into a form that is visually engaging and easy to explore.`,
-		cooperation: 'Simon Huwyler (Code)',
+		cooperation: 'Simon Huwyler (Code & Data), Marius Huber (Text)',
 		article:
 			'https://www.nzz.ch/zuerich/gold-gucci-und-gabbana-dieses-3-d-modell-zeigt-wie-die-zuercher-bahnhofstrasse-ein-ort-fuer-reiche-wurde-ld.1839429',
 		teaserImage: '/projects/bahnhofstrasse/bahnhofstrasse-teaser.png',
@@ -210,10 +210,12 @@ export const projects = [
 	{
 		title: 'Microchips',
 		year: 2023,
-		type: ['Data Visualization', 'Illustration'],
+		type: ['Data Visualization', 'Illustration', 'Motion'],
 		slug: 'microchips',
 		description: `This longform story traces the origins of the microchip from postwar California to the global tech race of today. Visually it draws from early computing design with a retro look inspired by the ›Commodore 64‹. The interface features a dark background, glowing colors and pixel-style animations. \n\n Data visualizations and technical diagrams are integrated into the flow as illustrative elements that feel playful and tactile. Animated images and scrolling effects guide the reader through milestones in chip history. The design creates a distinctive visual narrative that connects the past and present of digital technology.`,
-		cooperation: 'Roland Shaw, Kaspar Manz',
+		cooperation: 'Roland Shaw, Kaspar Manz, Marie-Astrid Langer',
+		article:
+			'https://www.nzz.ch/technologie/hintergrund/computerchips-designed-in-california-wie-eine-handvoll-amerikaner-die-welt-mit-computerchips-in-ein-neues-zeitalter-hievte-ld.1737471',
 		teaserImage: '/projects/microchips/microchips-teaser.png',
 		media: [
 			{
@@ -250,6 +252,8 @@ export const projects = [
 		slug: 'densification',
 		description: `This visual explainer uses playful, illustrative data storytelling to highlight the growing mismatch between housing supply and spatial demand in Switzerland. Inspired by the metaphor of corn kernels turning into popcorn, the project combines animated graphics, hand-drawn illustrations and data visualizations to explain complex urban planning challenges in an engaging way. \n\n Charts on household size, building types and land use are embedded within a light visual narrative. Motion and metaphor work together to make the issue of spatial inefficiency feel tangible and accessible to a wide audience.`,
 		cooperation: 'Giorgio Scherrer (Text)',
+		article:
+			'https://www.nzz.ch/zuerich/verdichtung-warum-das-in-der-schweiz-noch-nicht-funktioniert-ld.1698078',
 		teaserImage: '/projects/densification/verdichtung-teaser.png',
 		media: [
 			{
@@ -259,7 +263,7 @@ export const projects = [
 			},
 			{
 				type: 'image',
-				src: '/projects/densification/verdichtung-1.png',
+				src: '/projects/densification/verdichtung.gif',
 				span: 1
 			},
 			{
@@ -272,10 +276,12 @@ export const projects = [
 	{
 		title: 'Nespresso',
 		year: 2021,
-		type: ['Data Visualization', 'Illustration'],
+		type: ['Data Visualization', 'Illustration', 'Print'],
 		slug: 'nespresso',
 		description: `This multimedia story examines Nestlé’s climate strategy through one of its flagship products: the Nespresso capsule. It opens with an animated teaser showing capsules falling, using physics-based animation. \n\n Visualizations and maps trace the full lifecycle of a single capsule – from coffee farming and factory production to consumer use and recycling. Each step illustrates its climate footprint and the challenges of reaching net zero.`,
 		cooperation: 'Martin Beglinger, Matthias Benz (Text)',
+		article:
+			'https://www.nzz.ch/gesellschaft/352-milliarden-produkte-376-fabriken-null-co2-kann-nestle-das-schaffen-ld.1656624',
 		teaserImage: '/projects/nespresso-sustainability/nespresso-1.png',
 		media: [
 			{ type: 'vimeo', id: '1107480358', span: 2 },
@@ -294,7 +300,7 @@ export const projects = [
 	{
 		title: 'WindDisplay',
 		year: 2021,
-		type: ['Generative Tool'],
+		type: ['Generative Design', 'Data Visualization'],
 		slug: 'wind-display',
 		description: `›WindDisplay‹ is an online tool that shows the current wind conditions worldwide. The typography is influenced by real-time data, such as wind strength and wind direction. It should show experimentally how data could be visualized in other ways and how typography can communicate information only through visual appearance. The tool can be individualized by different sliders to change the location or the style of visualization.`,
 		mentors: 'Ted Davies',
