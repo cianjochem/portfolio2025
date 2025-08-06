@@ -33,16 +33,19 @@
 <!-- Titelbild / Titelvideo -->
 {#if project.media?.length > 0}
 	{#if project.media[0].type === 'image'}
-		<img src={project.media[0].src} alt={project.title} class="main-image" />
+		<img src={project.media[0].src} alt={project.title} class="main-image" loading="lazy" />
 	{:else if project.media[0].type === 'vimeo'}
-		<iframe
-			class="main-image"
-			src={`https://player.vimeo.com/video/${project.media[0].id}?autoplay=1&muted=1&loop=1&background=1`}
-			allow="autoplay; fullscreen"
-			allowfullscreen
-			title={project.title}
-			use:setAspectRatio
-		></iframe>
+		<div class="main-image" use:inView={() => markVisible('main-vimeo')}>
+			{#if $visibleMedia.has('main-vimeo')}
+				<iframe
+					src={`https://player.vimeo.com/video/${project.media[0].id}?autoplay=1&muted=1&loop=1&background=1`}
+					allow="autoplay; fullscreen"
+					allowfullscreen
+					title={project.title}
+					use:setAspectRatio
+				></iframe>
+			{/if}
+		</div>
 	{/if}
 {/if}
 
@@ -97,6 +100,8 @@
 						title={project.title}
 						use:setAspectRatio
 					></iframe>
+				{:else if item.type === 'p5'}
+					<WindDisplayCanvas />
 				{/if}
 			</div>
 		{/each}
@@ -155,7 +160,6 @@
 		border: 1px solid #ccc;
 		border-radius: 8px;
 		padding: 0.3rem 0.6rem;
-		font-size: 1rem;
 		color: #333;
 		text-transform: lowercase;
 		text-decoration: none;
@@ -166,7 +170,6 @@
 	}
 
 	.article-link a {
-		font-size: 1rem;
 		color: #000;
 		text-decoration: underline;
 	}
@@ -233,7 +236,7 @@
 		}
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 640px) {
 		.description {
 			column-count: 1;
 		}

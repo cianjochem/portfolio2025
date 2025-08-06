@@ -49,3 +49,14 @@ a {
 	font-family: 'EverettRegular', sans-serif;
 	font-size: 1rem;
 }
+
+@media (max-width: 640px) {
+	h2 {
+		font-size: 1.2rem;
+	}
+
+	p,
+	a {
+		font-size: 1.2rem;
+	}
+}

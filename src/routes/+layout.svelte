@@ -52,7 +52,7 @@
 	.layout-inner {
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 0 1rem;
+		padding: 0 1.2rem;
 	}
 
 	/* Sticky Header */
@@ -75,19 +75,11 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 15px 0 1rem;
-		font-weight: bold;
 	}
 
 	.about-button {
 		cursor: pointer;
 		text-decoration: none;
 		user-select: none;
-		font-size: 1rem;
-	}
-
-	@media (max-width: 768px) {
-		h2 {
-			font-size: 1.2rem;
-		}
 	}
 </style>

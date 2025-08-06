@@ -35,7 +35,7 @@
 			container: '.projects-grid',
 			trueOrder: false,
 			waitForImages: true,
-			margin: 16,
+			margin: 15,
 			columns: 3,
 			breakAt: {
 				1024: 2,
@@ -107,7 +107,6 @@
 		border: 1px solid #ccc;
 		border-radius: 8px;
 		padding: 0.3rem 0.6rem;
-		font-size: 1rem;
 		color: #333;
 		text-transform: lowercase;
 		display: inline-block;
@@ -115,12 +114,12 @@
 
 	.clear-filter {
 		text-decoration: none;
-		font-size: 1.2rem;
 		cursor: pointer;
 	}
 
 	.projects-grid {
 		display: block;
+		margin-top: 1rem;
 	}
 
 	.project-card {

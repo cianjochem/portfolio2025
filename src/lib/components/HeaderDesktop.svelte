@@ -16,7 +16,7 @@
 
 	onMount(() => {
 		regenerateTextLayout();
-		const interval = setInterval(regenerateTextLayout, 5000);
+		const interval = setInterval(regenerateTextLayout, 4000);
 		return () => clearInterval(interval);
 	});
 </script>

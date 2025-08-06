@@ -18,16 +18,16 @@
 
 	function regenerateTextLayout() {
 		// --- TOP ROW ---
-		const topMid = Array(39).fill('');
-		const topIndices = getSortedRandomIndices(topLetters.length, 39); // 0–38
+		const topMid = Array(19).fill('');
+		const topIndices = getSortedRandomIndices(topLetters.length, 19); // 0–38
 		topIndices.forEach((pos, i) => {
 			topMid[pos] = topLetters[i]; // I, A, N in Reihenfolge
 		});
 		topRow = ['C', ...topMid]; // C an erster Stelle (index 0)
 
 		// --- BOTTOM ROW ---
-		const bottomMid = Array(39).fill('');
-		const bottomIndices = getSortedRandomIndices(bottomLetters.length, 39); // 0–38
+		const bottomMid = Array(19).fill('');
+		const bottomIndices = getSortedRandomIndices(bottomLetters.length, 19); // 0–38
 		bottomIndices.forEach((pos, i) => {
 			bottomMid[pos] = bottomLetters[i]; // J, O, C, H, E in Reihenfolge
 		});
@@ -36,7 +36,7 @@
 
 	onMount(() => {
 		regenerateTextLayout();
-		const interval = setInterval(regenerateTextLayout, 5000);
+		const interval = setInterval(regenerateTextLayout, 4000);
 		return () => clearInterval(interval);
 	});
 </script>
@@ -60,12 +60,12 @@
 		flex-direction: column;
 		font-size: 1.2rem;
 		font-family: 'EverettBold', sans-serif;
-		gap: 4px;
+		gap: 5px;
 	}
 
 	.header-row {
 		display: grid;
-		grid-template-columns: repeat(40, 1fr);
+		grid-template-columns: repeat(20, 1fr);
 	}
 
 	.char {
