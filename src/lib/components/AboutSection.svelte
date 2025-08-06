@@ -39,7 +39,7 @@
 		position: relative;
 		height: 100vh;
 		overflow-y: auto;
-		padding: 2rem 0;
+		padding: 1rem 0 2rem;
 		background: #f7f7f7;
 		box-sizing: border-box;
 	}

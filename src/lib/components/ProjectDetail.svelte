@@ -227,7 +227,6 @@
 	.back-link {
 		margin-top: 2rem;
 		text-decoration: none;
-		font-family: 'EverettBold', sans-serif;
 	}
 
 	@media (max-width: 1024px) {
