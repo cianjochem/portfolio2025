@@ -11,11 +11,15 @@
 
 	const visibleProjects = writable(new Set());
 
+	// Tag aus URL-Parametern lesen
 	$: selectedTag = $page.url.searchParams.get('tag');
+
+	// Projekte nach Tag filtern (wenn gesetzt)
 	$: projects = selectedTag
 		? rawProjects.filter((p) => p.type?.includes(selectedTag))
 		: rawProjects;
 
+	// Sichtbare Einträge zurücksetzen bei neuem Filter
 	$: if (selectedTag) {
 		visibleProjects.set(new Set());
 	}
@@ -98,32 +102,33 @@
 	</div>
 {/if}
 
-<!-- Loader Overlay -->
-{#if loading}
-	<div class="loader-overlay">
-		<p class="spinner">Loading…</p>
-	</div>
-{/if}
+<!-- Grid mit integriertem Loader -->
+<div class="projects-grid-wrapper">
+	{#if loading}
+		<div class="loader-inline">
+			<p class="spinner">Loading…</p>
+		</div>
+	{/if}
 
-<!-- Grid -->
-<div class="projects-grid" class:loading>
-	{#each projects as project (project.slug)}
-		{#key project.slug}
-			<a
-				href={`/projects/${project.slug}`}
-				class="project-card"
-				class:visible={$visibleProjects.has(project.slug)}
-				use:inView={handleInView(project.slug)}
-			>
-				<div class="image-wrapper">
-					<img src={project.teaserImage} alt={project.title} loading="lazy" />
-					<div class="hover-title">
-						<h3>{project.title}</h3>
+	<div class="projects-grid" class:loading>
+		{#each projects as project (project.slug)}
+			{#key project.slug}
+				<a
+					href={`/projects/${project.slug}`}
+					class="project-card"
+					class:visible={$visibleProjects.has(project.slug)}
+					use:inView={handleInView(project.slug)}
+				>
+					<div class="image-wrapper">
+						<img src={project.teaserImage} alt={project.title} loading="lazy" />
+						<div class="hover-title">
+							<h3>{project.title}</h3>
+						</div>
 					</div>
-				</div>
-			</a>
-		{/key}
-	{/each}
+				</a>
+			{/key}
+		{/each}
+	</div>
 </div>
 
 <style>
@@ -146,6 +151,25 @@
 	.clear-filter {
 		text-decoration: none;
 		cursor: pointer;
+	}
+
+	.projects-grid-wrapper {
+		position: relative;
+		min-height: 300px;
+	}
+
+	.loader-inline {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #f7f7f7;
+		z-index: 10;
+		pointer-events: none;
 	}
 
 	.projects-grid {
@@ -213,20 +237,6 @@
 		opacity: 1;
 	}
 
-	/* Loader */
-	.loader-overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: white;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		z-index: 200;
-	}
-
 	.spinner {
 		color: #333;
 		animation: pulse 1.5s infinite;
@@ -245,6 +255,6 @@
 	}
 
 	@media (max-width: 1024px) {
-		/* Responsive styles if needed */
+		/* Optional: responsive styles */
 	}
 </style>

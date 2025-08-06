@@ -261,6 +261,11 @@ export const projects = [
 				type: 'image',
 				src: '/projects/densification/verdichtung-1.png',
 				span: 1
+			},
+			{
+				type: 'image',
+				src: '/projects/densification/verdichtung-2.png',
+				span: 1
 			}
 		]
 	},
