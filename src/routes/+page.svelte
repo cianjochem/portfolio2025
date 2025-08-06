@@ -5,9 +5,11 @@
 	import { page } from '$app/stores';
 	import { onMount, afterUpdate } from 'svelte';
 
-	const visibleProjects = writable(new Set());
 	let projects = rawProjects;
 	let macyInstance;
+	let loading = true;
+
+	const visibleProjects = writable(new Set());
 
 	$: selectedTag = $page.url.searchParams.get('tag');
 	$: projects = selectedTag
@@ -28,7 +30,6 @@
 	}
 
 	async function initializeMacy() {
-		// Macy nur im Browser laden
 		const Macy = (await import('macy')).default;
 
 		macyInstance = Macy({
@@ -44,12 +45,34 @@
 		});
 	}
 
+	function waitForAllImagesToLoad(selector) {
+		return new Promise((resolve) => {
+			const images = document.querySelectorAll(`${selector} img`);
+			if (images.length === 0) return resolve();
+
+			let loaded = 0;
+			images.forEach((img) => {
+				if (img.complete) {
+					loaded++;
+					if (loaded === images.length) resolve();
+				} else {
+					img.addEventListener('load', () => {
+						loaded++;
+						if (loaded === images.length) resolve();
+					});
+				}
+			});
+		});
+	}
+
 	onMount(() => {
 		const onLoad = async () => {
 			await initializeMacy();
+			await waitForAllImagesToLoad('.projects-grid');
 			if (macyInstance) {
 				macyInstance.recalculate(true);
 			}
+			loading = false;
 		};
 
 		if (document.readyState === 'complete') {
@@ -75,7 +98,15 @@
 	</div>
 {/if}
 
-<div class="projects-grid">
+<!-- Loader Overlay -->
+{#if loading}
+	<div class="loader-overlay">
+		<p class="spinner">Loading…</p>
+	</div>
+{/if}
+
+<!-- Grid -->
+<div class="projects-grid" class:loading>
 	{#each projects as project (project.slug)}
 		{#key project.slug}
 			<a
@@ -85,7 +116,7 @@
 				use:inView={handleInView(project.slug)}
 			>
 				<div class="image-wrapper">
-					<img src={project.teaserImage} alt={project.title} />
+					<img src={project.teaserImage} alt={project.title} loading="lazy" />
 					<div class="hover-title">
 						<h3>{project.title}</h3>
 					</div>
@@ -120,6 +151,13 @@
 	.projects-grid {
 		display: block;
 		margin-top: 1rem;
+		transition: opacity 0.5s ease;
+		opacity: 1;
+	}
+
+	.projects-grid.loading {
+		opacity: 0;
+		pointer-events: none;
 	}
 
 	.project-card {
@@ -173,5 +211,40 @@
 
 	.project-card:hover .hover-title {
 		opacity: 1;
+	}
+
+	/* Loader */
+	.loader-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 200;
+	}
+
+	.spinner {
+		color: #333;
+		animation: pulse 1.5s infinite;
+	}
+
+	@keyframes pulse {
+		0% {
+			opacity: 0.3;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0.3;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		/* Responsive styles if needed */
 	}
 </style>
