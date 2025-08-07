@@ -3,6 +3,7 @@
 	import Header from '$lib/components/Header.svelte';
 	import AboutSection from '$lib/components/AboutSection.svelte';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	injectAnalytics();
 
 	let showAbout = false;
 </script>
